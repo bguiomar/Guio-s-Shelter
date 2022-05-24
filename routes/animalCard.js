@@ -26,9 +26,8 @@ router.get("/:id", async function(req, res, next) {
 // INSERT a new animalcard into the DB
 router.post("/", async function(req, res, next) {
   
-  
   let { petName, species, race, sex, chipNumber, age, castrate, vaccinate, joining, petDescription } = req.body;
-  let sql = `INSERT INTO animalcard (firstname, lastname) VALUES ("${firstname}", "${lastname}")`;
+  let sql = `INSERT INTO animalcard (petName, species, race, sex, chipNumber, age, castrate, vaccinate, joining, petDescription ) VALUES ("${"petName"}, ${"species"}, ${"race"}, ${"sex"}, ${chipNumber}, ${age}, ${castrate}, ${vaccinate}, ${"joining"}, ${"petDescription"}")`;
 
   try {
     await db(sql); // add new item (do the insert)
