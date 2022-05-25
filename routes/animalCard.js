@@ -4,7 +4,53 @@ const db = require("../model/helper");
 
 /* GET users listing. */
 router.get('/',  function(req, res, next) {
-  db("SELECT * FROM animalcard")
+ 
+  let condition = "";
+
+  if (req.query.species){
+    condition += `species = "${req.query.species}"`;
+  }
+
+  if (req.query.race){
+    if (condition === ""){
+      condition += `race = "${req.query.race}"`;
+    }else{
+      condition += ` and race = "${req.query.race}"`;
+    }
+  }
+
+  if (req.query.sex){
+    if (condition === ""){
+      condition += `sex = "${req.query.sex}"`;
+    }else{
+      condition += ` and sex = "${req.query.sex}"`;
+    }
+  }
+
+  let sql_query = null;
+
+  if (condition === ""){
+     sql_query = "SELECT * FROM animalcard";
+  }else{
+    sql_query = "SELECT * FROM animalcard WHERE " + condition;
+  }
+  
+
+
+  if (req.query.order){
+    if (req.query.order === "DESC"){
+      sql_query += " ORDER BY joining DESC";
+    }else{
+      sql_query += " ORDER BY joining ASC";
+    }
+  }
+
+  if (req.query.limit){
+      sql_query += " LIMIT " + req.query.limit;
+  }
+
+
+  db(sql_query)
   .then(results => {
     res.send(results.data);
   })
@@ -13,7 +59,6 @@ router.get('/',  function(req, res, next) {
 
 /* GET one animalCard */
 router.get("/:id", async function(req, res, next) {
-
   let animalId = req.params.id;
   let results = await db(`SELECT * FROM animalcard WHERE id =${animalId}`);
   if (results.data.length === 0) {

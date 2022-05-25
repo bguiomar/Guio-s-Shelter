@@ -5,12 +5,11 @@ const EMPTY_FORM = {
     petName: "" ,
     species: "",
     race: "",
-    sex: "", 
-    chipNumber: undefined, 
-    age: undefined,
-    castrate: undefined, 
-    vaccinate: undefined,
-    joining: "", 
+    sex: "F", 
+    chipNumber: "", 
+    age: "",
+    castrate: 0, 
+    vaccinate: 0,
     petDescription: "" 
   };
   
@@ -24,13 +23,20 @@ const EMPTY_FORM = {
   
     function handleSubmit(event) {
       event.preventDefault();
-      props.postAnimalCardCb(newAnimalCard); //??????
+
+      let newAnimal = newAnimalCard;
+      newAnimal.joining = new Date().toJSON().slice(0,10); //modificamos formato de la fecha.
+      props.postAnimalCardCb(newAnimal); 
       setNewAnimalCard(EMPTY_FORM);
     }
   
     return (
         <div className="potato">
             <form  className ="banana" onSubmit={e => handleSubmit(e)}>
+
+
+
+
                 <label>
                 {" "}  Name:{" "}
                 <input
@@ -62,12 +68,10 @@ const EMPTY_FORM = {
 
                 <label>
                 {" "}Sex:{" "}
-                <input
-                    type="text"
-                    name="sex"
-                    value={newAnimalCard.sex}
-                    onChange={e => handleChange(e)}
-                />
+                <select name="sex"  onChange={e => handleChange(e) } defaultValue={'F'}>
+                    <option value="F" >Female</option> 
+                    <option value="M" >Male</option>
+                </select>
                 </label>
                 
                 <label>
@@ -92,32 +96,18 @@ const EMPTY_FORM = {
 
                 <label>
                 {" "}castrate:{" "}
-                <input
-                    type="number"
-                    name="castrate"
-                    value={newAnimalCard.castrate}
-                    onChange={e => handleChange(e)}
-                />
+                <select name="castrate"  onChange={e => handleChange(e) } defaultValue={'0'}>
+                    <option value="0" >No</option> 
+                    <option value="1" >Yes</option>
+                </select>
                 </label>
 
                 <label>
                 {" "}vaccinate:{" "}
-                <input
-                    type="number"
-                    name="vaccinate"
-                    value={newAnimalCard.vaccinate}
-                    onChange={e => handleChange(e)}
-                />
-                </label>
-
-                <label>
-                {" "}joining:{" "}
-                <input
-                    type="text"
-                    name="joining"
-                    value={newAnimalCard.joining}
-                    onChange={e => handleChange(e)}
-                />
+                <select name="vaccinate"  onChange={e => handleChange(e) } defaultValue={'0'}>
+                    <option value="0" >No</option> 
+                    <option value="1" >Yes</option>
+                </select>
                 </label>
 
                 <label>
