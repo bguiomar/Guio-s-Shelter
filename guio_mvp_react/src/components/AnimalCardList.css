@@ -1,5 +1,5 @@
-.AnimalCardLis {
-  background-color: #e09f43;
+.AnimalCardList {
+  background-color: #f9c57c;
   border-radius: 25px;
   padding: 20px;
   margin-top: 20px;
@@ -7,7 +7,12 @@
   border: 3px solid #23362b;
 }
 
-.AnimalCard {
+.AnimalCard2 {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+button {
+  background-color: #e09f43;
+  margin: 30px;
 }

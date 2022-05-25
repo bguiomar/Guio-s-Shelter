@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import AnimalCardList from './components/AnimalCardForm';
+import AnimalCardList from './components/AnimalCardList';
 import AnimalCardForm from "./components/AnimalCardForm";
 
 export default function App() {
@@ -45,8 +45,11 @@ export default function App() {
 
   return (
     <div className="App">
-      <AnimalCardList allAnimalCardListCb ={allAnimalCard}/>
-      <AnimalCardForm postAnimalCardCb={postAnimalCard}/>
+      <h2>All of the animals</h2>
+      <AnimalCardList CardListCb = {allAnimalCard}/>
+
+      <h3>Post a new pet friend</h3>
+      <AnimalCardForm postAnimalCardCb = {postAnimalCard}/>
         
         
       

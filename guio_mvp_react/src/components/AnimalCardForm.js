@@ -6,10 +6,10 @@ const EMPTY_FORM = {
     species: "",
     race: "",
     sex: "", 
-    chipNumber: "", 
-    age: "",
-    castrate: "", 
-    vaccinate: "",
+    chipNumber: undefined, 
+    age: undefined,
+    castrate: undefined, 
+    vaccinate: undefined,
     joining: "", 
     petDescription: "" 
   };
@@ -24,7 +24,7 @@ const EMPTY_FORM = {
   
     function handleSubmit(event) {
       event.preventDefault();
-      props.postAnimalCardCb(newAnimalCard);
+      props.postAnimalCardCb(newAnimalCard); //??????
       setNewAnimalCard(EMPTY_FORM);
     }
   
