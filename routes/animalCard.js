@@ -4,7 +4,7 @@ const db = require("../model/helper");
 
 /* GET users listing. */
 router.get('/',  function(req, res, next) {
-  db("SELECT * FROM animalcard;")
+  db("SELECT * FROM animalcard")
   .then(results => {
     res.send(results.data);
   })
@@ -24,7 +24,7 @@ router.get("/:id", async function(req, res, next) {
 });
 
 // INSERT a new animalcard into the DB
-router.post("/", async function(req, res, next) {
+router.post("/animalcard", async function(req, res, next) {
   
   let { petName, species, race, sex, chipNumber, age, castrate, vaccinate, joining, petDescription } = req.body;
   let sql = `INSERT INTO animalcard (petName, species, race, sex, chipNumber, age, castrate, vaccinate, joining, petDescription ) VALUES ("${petName}", "${species}", "${race}", "${sex}", ${chipNumber}, ${age}, ${castrate}, ${vaccinate}, "${joining}", "${petDescription}")`;
