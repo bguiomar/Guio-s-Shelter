@@ -9,7 +9,7 @@ router.get('/',  function(req, res, next) {
 
   // here we create the query that the clients will use:
   if (req.query.species){
-    condition += `species = "${req.query.species}"`;
+    condition += `species="${req.query.species}"`;
   }
 
   if (req.query.race){
