@@ -9,6 +9,7 @@ export default function App() {
   // let [filterAnimalCard, setFil]
   useEffect(() => {
     showAllAnimalCard();
+    
       
     }, []);
   
@@ -46,7 +47,6 @@ export default function App() {
           console.log(error);
         });
     };
-  
   const showAllAnimalCard = () =>{
     fetch("/animalcard?order=ASC&limit=7")
     .then(response => response.json())
