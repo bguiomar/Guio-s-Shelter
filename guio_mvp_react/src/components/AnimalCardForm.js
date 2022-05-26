@@ -25,7 +25,7 @@ const EMPTY_FORM = {
       event.preventDefault();
 
       let newAnimal = newAnimalCard;
-      newAnimal.joining = new Date().toJSON().slice(0,10); //modificamos formato de la fecha.
+      newAnimal.joining = new Date().toISOString().slice(0,12); //we modify the date format
       props.postAnimalCardCb(newAnimal); 
       setNewAnimalCard(EMPTY_FORM);
     }
@@ -33,10 +33,6 @@ const EMPTY_FORM = {
     return (
         <div className="potato">
             <form  className ="banana" onSubmit={e => handleSubmit(e)}>
-
-
-
-
                 <label>
                 {" "}  Name:{" "}
                 <input

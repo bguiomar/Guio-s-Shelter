@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "./AnimalCardList.css"
 
 function AnimalCardList(props) {
-  return (
-
-      <ul className="AnimalCardList AnimalCard2" >
-          <h3>All our pet friends</h3>
+  return (<div className="AnimalCardList">
+    <h3>All our pet friends</h3>
+    
+      <ul className="AnimalCard2">
+          
         {props.CardListCb.map(a => (
           
             <div key={a.id} >
@@ -17,18 +18,18 @@ function AnimalCardList(props) {
               <p>{a.age}</p>
               <p>{a.castrate}</p>
               <p> {a.vaccinate} </p>
-              <p>{a.joining}</p>
+              <p>{ (new Date(a.joining)).toLocaleDateString() }</p> {/* we use a class and then we use the function toLocalDateString() to erase hours from DATE */}
               <p> {a.petDescription}</p>
 
             
-            <button type="button" onClick={e => props.deleteCb(a.id)}>
+            {/* <button type="button" onClick={e => props.deleteCb(a.id)}>
               Delete
-            </button>{" "}
+            </button>{" "} */}
             </div>
           
         ))}
       </ul>
-    
+    </div>
   );
 }
 

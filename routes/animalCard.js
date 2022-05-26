@@ -7,6 +7,7 @@ router.get('/',  function(req, res, next) {
  
   let condition = "";
 
+  // here we create the query that the clients will use:
   if (req.query.species){
     condition += `species = "${req.query.species}"`;
   }
@@ -27,16 +28,36 @@ router.get('/',  function(req, res, next) {
     }
   }
 
-  let sql_query = null;
+  if (req.query.age){
+    if (condition === ""){
+      condition += `age = "${req.query.age}"`;
+    }else{
+      condition += ` and age = "${req.query.age}"`;
+    }
+  }
 
+  if (req.query.castrate){
+    if (condition === ""){
+      condition += `castrate = "${req.query.castrate}"`;
+    }else{
+      condition += ` and castrate = "${req.query.castrate}"`;
+    }
+  }
+  if (req.query.vaccinate){
+    if (condition === ""){
+      condition += `vaccinate = "${req.query.vaccinate}"`;
+    }else{
+      condition += ` and vaccinate = "${req.query.vaccinate}"`;
+    }
+  }
+
+  let sql_query = null;
   if (condition === ""){
      sql_query = "SELECT * FROM animalcard";
   }else{
     sql_query = "SELECT * FROM animalcard WHERE " + condition;
   }
   
-
-
   if (req.query.order){
     if (req.query.order === "DESC"){
       sql_query += " ORDER BY joining DESC";

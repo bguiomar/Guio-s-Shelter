@@ -16,3 +16,8 @@ button {
   background-color: #e09f43;
   margin: 30px;
 }
+
+ul h3 {
+  color: #704508;
+  display: flex;
+}
