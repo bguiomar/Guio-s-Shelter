@@ -28,11 +28,19 @@ router.get('/',  function(req, res, next) {
     }
   }
 
-  if (req.query.age){
+  if (req.query.minage){
     if (condition === ""){
-      condition += `age = "${req.query.age}"`;
+      condition += `age >= "${req.query.minage}"`;
     }else{
-      condition += ` and age = "${req.query.age}"`;
+      condition += ` and age >= "${req.query.minage}"`;
+    }
+  }
+
+  if (req.query.maxage){
+    if (condition === ""){
+      condition += `age <= "${req.query.maxage}"`;
+    }else{
+      condition += ` and age <= "${req.query.maxage}"`;
     }
   }
 

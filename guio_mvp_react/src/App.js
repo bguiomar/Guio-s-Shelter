@@ -14,26 +14,27 @@ export default function App() {
   
   const filteredAnimalCard = (filter)=>{
       let query = ""
-      if(filter.species){
+      console.log(filter)
+      if(filter.species != "all"){
         query += "&species="+filter.species
       }
-      if(filter.race){
+      if(filter.race != "all"){
         query += "&race="+filter.race
       }
-      if(filter.sex){
+      if(filter.sex != "all"){
         query += "&sex="+filter.sex
       }
-      if(filter.age){
-        query += "&age="+filter.age
+      if(filter.minage){
+        query += "&minage="+filter.minage
       }
-      if(filter.castrate){
+      if(filter.maxage){
+        query += "&maxage="+filter.maxage
+      }
+      if(filter.castrate != "all"){
         query += "&castrate="+filter.castrate
       }
-      if(filter.vaccinate){
+      if(filter.vaccinate != "all"){
         query += "&vaccinate="+filter.vaccinate
-      }
-      if(filter.joining){
-        query += "&joining="+filter.joining
       }
 
       fetch("/animalcard?order=ASC&limit=15" + query)

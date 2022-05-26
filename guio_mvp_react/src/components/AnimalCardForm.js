@@ -3,9 +3,9 @@ import "./AnimalCardList.css";
 
 const EMPTY_FORM = {
     petName: "" ,
-    species: "",
+    species: "dog",
     race: "",
-    sex: "F", 
+    sex: "Female", 
     chipNumber: "", 
     age: "",
     castrate: 0, 
@@ -45,12 +45,10 @@ const EMPTY_FORM = {
         
                 <label>
                 {" "}  Species:{" "}
-                <input
-                    type="text"
-                    name="species"
-                    value={newAnimalCard.species}
-                    onChange={e => handleChange(e)}
-                />
+                <select name="species"  onChange={e => handleChange(e) } defaultValue={'dog'}>
+                    <option value="cat" >Cat</option> 
+                    <option value="dog" >Dog</option>
+                </select>
                 </label>
                 <label>
                 {" "} Race:{" "}
@@ -64,9 +62,9 @@ const EMPTY_FORM = {
 
                 <label>
                 {" "}Sex:{" "}
-                <select name="sex"  onChange={e => handleChange(e) } defaultValue={'F'}>
-                    <option value="F" >Female</option> 
-                    <option value="M" >Male</option>
+                <select name="sex"  onChange={e => handleChange(e) } defaultValue={'Female'}>
+                    <option value="Female" >Female</option> 
+                    <option value="Male" >Male</option>
                 </select>
                 </label>
                 
