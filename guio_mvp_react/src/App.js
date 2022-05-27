@@ -3,97 +3,24 @@ import "./App.css";
 import {Routes, Route, BrowserRouter} from "react-router-dom";
 import AdminView from "./views/AdminView";
 import UserView from "./views/UserView";
-
+import Home from "./views/Home";
 
 
 import Navbar from './components/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App() {
-  let [currentAnimalCard, setCurrentAnimalCard] = useState([]); 
-  // let [filterAnimalCard, setFil]
-  useEffect(() => {
-    showAllAnimalCard();
-
-      
-    }, []);
   
-  const filteredAnimalCard = (filter)=>{
-      let query = ""
-      console.log(filter)
-      if(filter.species != "all"){
-        query += "&species="+filter.species
-      }
-      if(filter.race != "all"){
-        query += "&race="+filter.race
-      }
-      if(filter.sex != "all"){
-        query += "&sex="+filter.sex
-      }
-      if(filter.minage){
-        query += "&minage="+filter.minage
-      }
-      if(filter.maxage){
-        query += "&maxage="+filter.maxage
-      }
-      if(filter.castrate != "all"){
-        query += "&castrate="+filter.castrate
-      }
-      if(filter.vaccinate != "all"){
-        query += "&vaccinate="+filter.vaccinate
-      }
-
-      fetch("/animalcard?order=ASC&limit=15" + query)
-      .then(response => response.json())
-        .then(data => {
-          setCurrentAnimalCard(data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    };
-  const showAllAnimalCard = () =>{
-    fetch("/animalcard?order=ASC&limit=7")
-    .then(response => response.json())
-      .then(data => {
-        setCurrentAnimalCard(data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
-
-  async function postAnimalCard(newAnimalCard) {
-    let options = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newAnimalCard)
-    };
-
-    try {
-      let response = await fetch("/animalcard/animalcard", options);
-      if (response.ok) {
-        showAllAnimalCard();
-      } else {
-        console.log(`Server error: ${response.status}, ${response.statusText}`);
-      }
-    } catch (error) {
-      console.log(`Network error: ${error.message}`);
-    }
-  }
-
-  async function deleteAnimalCard(){}
-
-
+  
   return (<>
-   
-    <BrowserRouter>
+  
     <Navbar/>  
      <Routes>
+          <Route path="/" element={<Home />}/>
           <Route path="/adminview" element={<AdminView/>}/>
           <Route path="/userview" element={<UserView/>}/>
       </Routes>
-    </BrowserRouter>
+   
    
     </>
   );
