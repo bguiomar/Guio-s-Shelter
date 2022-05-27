@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import {Routes, Route} from "react-router-dom";
+import {Routes, Route, BrowserRouter} from "react-router-dom";
 import AdminView from "./views/AdminView";
 import UserView from "./views/UserView";
-import AnimalCardList from './components/AnimalCardList';
-import AnimalCardForm from "./components/AnimalCardForm";
-import FilterButtons from "./components/FilterButtons";
+
+
+
 import Navbar from './components/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -85,20 +85,17 @@ export default function App() {
   async function deleteAnimalCard(){}
 
 
-  return (
-    <div className="App container">
-      <Navbar/>
-      <h2 className="">All of the animals</h2>
-      <FilterButtons  filteredAnimalCardCb={filteredAnimalCard}/>
-      <AnimalCardList CardListCb = {currentAnimalCard}/>
-
-      <h3>Post a new pet friend</h3>
-      <div><AnimalCardForm postAnimalCardCb = {postAnimalCard}/></div>
-      <Routes>
+  return (<>
+   
+    <BrowserRouter>
+    <Navbar/>  
+     <Routes>
           <Route path="/adminview" element={<AdminView/>}/>
           <Route path="/userview" element={<UserView/>}/>
       </Routes>
-    </div>
+    </BrowserRouter>
+   
+    </>
   );
 }
 
