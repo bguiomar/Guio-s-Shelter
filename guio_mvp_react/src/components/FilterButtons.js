@@ -83,7 +83,7 @@ function FilterButtons(props) {
               <option value="1" >YES</option>
           </select>
         </label>
-        <button className="" type="button" onClick={handleFilter}>
+        <button className="btn btn-primary" type="button" onClick={handleFilter}>
                 Filter
         </button>
 
