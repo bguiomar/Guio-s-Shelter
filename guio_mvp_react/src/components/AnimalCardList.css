@@ -1,23 +1,7 @@
-.AnimalCardList {
-  background-color: #f9c57c;
-  border-radius: 25px;
-  padding: 20px;
-  margin-top: 20px;
-  margin-right: 20px;
-  border: 3px solid #23362b;
-}
-
-.AnimalCard2 {
+.animalcard {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-}
-
-button {
-  background-color: #e09f43;
-  margin: 30px;
-}
-
-ul h3 {
-  color: #704508;
-  display: flex;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 500px;
+  margin: 2em 0 0.5em;
+  height: fit-content;
 }

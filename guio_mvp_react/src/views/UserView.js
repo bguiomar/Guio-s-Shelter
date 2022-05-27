@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from "react";
 import AnimalCardList from "../components/AnimalCardList";
 import FilterButtons from "../components/FilterButtons";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function UserView(){
     let [currentAnimalCard, setCurrentAnimalCard] = useState([]); 
@@ -57,7 +58,7 @@ function UserView(){
 
     return(
         <div className="Userview"> 
-        <h1> UserView</h1>
+       
         <FilterButtons  filteredAnimalCardCb={filteredAnimalCard}/>
         <AnimalCardList CardListCb = {currentAnimalCard}/>
         </div>
