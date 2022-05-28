@@ -1,6 +1,20 @@
 var express = require('express');
 var router = express.Router();
 const db = require("../model/helper");
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./");},
+  filename: function(req, file, cb) {
+    const ext = file.mimetype.split("/")[1];
+    cb(null,`uploads/${file.originalname}-${Date.now()}.${ext}`);
+  }
+});
+
+const upload = multer({
+  storage: storage
+});
 
 /* GET users listing. */
 router.get('/',  function(req, res, next) {
@@ -81,7 +95,23 @@ router.get('/',  function(req, res, next) {
 
   db(sql_query)
   .then(results => {
-    res.send(results.data);
+
+    let animals = results.data;
+    for (let i; i < animals.length; i++){
+      console.log(result_img);
+      db(`SELECT * FROM animalcardImages WHERE animal =${animals[i].id}`).
+      then (results_img => {
+        
+        if (results_img.data.length > 0){
+          animals[i].images = results_img.data;
+        }
+      })
+    }
+    res.send(animals);
+
+
+
+
   })
   .catch(err => res.status(500).send(err));
 });
@@ -90,10 +120,21 @@ router.get('/',  function(req, res, next) {
 router.get("/:id", async function(req, res, next) {
   let animalId = req.params.id;
   let results = await db(`SELECT * FROM animalcard WHERE id =${animalId}`);
+
+  let result_img = null;
+  
+   
+
   if (results.data.length === 0) {
     res.status(404).send({ error: "Animal not found" });
   } else {
-    res.send(results.data[0]);
+    let result_img = await db(`SELECT * FROM animalcardImages WHERE animal =${animalId}`);
+    let animal = results.data[0];
+    animal.images =[];
+    if (result_img.data.length > 0){
+      animal.images = result_img.data;
+    }
+    res.send(animal);
   }
 });
 
@@ -129,4 +170,6 @@ router.delete("/:id", async function(req, res, next) {
     res.status(500).send({ error: err.message });
   }
 });
+
+
 module.exports = router;

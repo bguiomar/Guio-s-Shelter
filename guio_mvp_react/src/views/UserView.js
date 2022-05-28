@@ -58,9 +58,11 @@ function UserView(){
 
     return(
         <div className="Userview"> 
-       
-        <FilterButtons  filteredAnimalCardCb={filteredAnimalCard}/>
+        <div class="wrapper">
+          <FilterButtons  filteredAnimalCardCb={filteredAnimalCard}/>
         <AnimalCardList CardListCb = {currentAnimalCard}/>
+        </div>
+        
         </div>
     )
 }
