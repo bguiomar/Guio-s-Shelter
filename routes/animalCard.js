@@ -1,23 +1,9 @@
 var express = require('express');
 var router = express.Router();
 const db = require("../model/helper");
-const multer = require('multer');
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "./");},
-  filename: function(req, file, cb) {
-    const ext = file.mimetype.split("/")[1];
-    cb(null,`uploads/${file.originalname}-${Date.now()}.${ext}`);
-  }
-});
-
-const upload = multer({
-  storage: storage
-});
 
 /* GET users listing. */
-router.get('/',  function(req, res, next) {
+router.get('/',  async function(req, res, next) {
  
   let condition = "";
 
@@ -92,28 +78,21 @@ router.get('/',  function(req, res, next) {
       sql_query += " LIMIT " + req.query.limit;
   }
 
-
-  db(sql_query)
-  .then(results => {
-
+  try{
+    let results = await db(sql_query)
     let animals = results.data;
-    for (let i; i < animals.length; i++){
-      console.log(result_img);
-      db(`SELECT * FROM animalcardImages WHERE animal =${animals[i].id}`).
-      then (results_img => {
+    for (let i = 0; i < animals.length; i++){
         
-        if (results_img.data.length > 0){
-          animals[i].images = results_img.data;
-        }
-      })
+      let images = await db(`SELECT * FROM animalcardImages WHERE animal =${animals[i].id}`)
+      animals[i].images = [];
+      if (images.data.length > 0){
+        animals[i].images = images.data.map((e) => e.imgName);
+      }
     }
     res.send(animals);
-
-
-
-
-  })
-  .catch(err => res.status(500).send(err));
+  }catch (err) {
+    res.status(500).send({ error: err.message });
+  }
 });
 
 /* GET one animalCard */

@@ -14,9 +14,6 @@ CREATE TABLE animalcard(
     petDescription TEXT
 );
 
-INSERT INTO animalcard (petName, species, race, sex, chipNumber, age, castrate, vaccinate , petDescription)
-    VALUES ('Bimba', 'Dog', 'Mix', 'F', '000000000001', 2, 1, 1, 'Guiomar is dog, she love plays with pine cone and taking a naps during summer '), ('Flama', 'Dog', 'Mix', 'F', '000000000002', 2, 1, 1, 'Irene is dog, she is black and she love go by Kayak');
-
 
 CREATE TABLE animalcardImages(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -24,6 +21,3 @@ CREATE TABLE animalcardImages(
     animal INT,
     FOREIGN KEY (animal) REFERENCES animalcard(id)
 );
-
-INSERT INTO animalcardImages (imgName, animal)
-    VALUES ('prueba.png', 1);

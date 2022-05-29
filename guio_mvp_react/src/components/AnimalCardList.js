@@ -28,7 +28,7 @@ function Description(props){
 function Card(props){
   return(
     <div className="card" >
-    <img className="card-img-top" src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="..."/>
+    <img className="card-img-top" src={props.images[0]} alt="pet photo"/>
     <div className="card-body">
       <h5 className="card-title">{props.petName}</h5>
       <p className="card-text">{Description(props)}</p>

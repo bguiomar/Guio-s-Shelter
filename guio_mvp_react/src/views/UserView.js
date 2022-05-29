@@ -11,7 +11,7 @@ function UserView(){
         }, []);
 
     const showAllAnimalCard = () =>{
-        fetch("/animalcard?order=ASC&limit=7")
+        fetch("/animalcard?order=ASC&limit=15")
         .then(response => response.json())
         .then(data => {
          setCurrentAnimalCard(data);
@@ -57,11 +57,15 @@ function UserView(){
           };
 
     return(
-        <div className="Userview"> 
-        <div class="wrapper">
-          <FilterButtons  filteredAnimalCardCb={filteredAnimalCard}/>
-        <AnimalCardList CardListCb = {currentAnimalCard}/>
-        </div>
+    <div className="Userview container-fluid"> 
+<div className="row">
+<div className="col-2">
+<FilterButtons  filteredAnimalCardCb={filteredAnimalCard}/>
+</div>
+        
+        <div className="col-10"><AnimalCardList CardListCb = {currentAnimalCard}/> </div>
+</div>
+        
         
         </div>
     )

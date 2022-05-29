@@ -13,24 +13,48 @@ function AdminView(){
             console.log(error);
           });
       };
-    async function postAnimalCard(newAnimalCard) {
+
+    function postImage(animalId, file){
+      const formData = new FormData();
+      formData.append('image',file);
+      formData.append('animalId',animalId);
+
+      let options = {
+        method: "POST",
+        body: formData,
+        headers: { 'Accept': 'multipart/form-data', },
+      };
+
+      fetch("/images", options)
+      .catch(error => {console.log(error)});
+    }
+
+    async function postAnimalCard(newAnimalCard,file) {
         let options = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newAnimalCard)
         };
-    
-        try {
-          let response = await fetch("/animalcard/animalcard", options);
+          fetch("/animalcard/animalcard", options)
+          .then(response => response.json())
+          .then(data => {
+              postImage(data.data[0].id, file);
+              showAllAnimalCard();
+            }
+          ).catch(error => {console.log(error)});
+
+         /* let response = await fetch("/animalcard/animalcard", options);
+          console.log(response.json())
           if (response.ok) {
+            await postImage(, file);
             showAllAnimalCard();
           } else {
             console.log(`Server error: ${response.status}, ${response.statusText}`);
           }
         } catch (error) {
           console.log(`Network error: ${error.message}`);
-        }
-      }
+        }*/
+      };
 
     return(<>
     <h1 className="text-second "> AdminView</h1>

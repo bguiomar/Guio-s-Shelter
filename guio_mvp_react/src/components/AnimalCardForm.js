@@ -15,7 +15,8 @@ const EMPTY_FORM = {
   
   function AnimalCardForm(props) {
     const [newAnimalCard, setNewAnimalCard] = useState(EMPTY_FORM);
-  
+    const [file, setFile] = useState([]);
+
     function handleChange(event) {
       let { name, value } = event.target;
       setNewAnimalCard(animalCard => ({ ...animalCard, [name]: value }));
@@ -26,12 +27,18 @@ const EMPTY_FORM = {
 
       let newAnimal = newAnimalCard;
       newAnimal.joining = new Date().toISOString().slice(0,12); //we modify the date format
-      props.postAnimalCardCb(newAnimal); 
+      props.postAnimalCardCb(newAnimal,file); 
       setNewAnimalCard(EMPTY_FORM);
     }
   
+    function imageHandler(event) {
+        const file = event.target.files[0];
+        setFile(file);
+    }
+
     return (
         <div className="potato">
+            <input type="file" name="image" accept="image/*" multiple={false} onChange={imageHandler} />
             <form  className ="banana" onSubmit={e => handleSubmit(e)}>
                 <label>
                 {" "}  Name:{" "}
