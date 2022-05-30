@@ -4,7 +4,7 @@ import FilterButtons from "../components/FilterButtons";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function UserView(){
-    let [currentAnimalCard, setCurrentAnimalCard] = useState([]); 
+    const [currentAnimalCard, setCurrentAnimalCard] = useState([]); 
   // let [filterAnimalCard, setFil]
     useEffect(() => {
         showAllAnimalCard(); 

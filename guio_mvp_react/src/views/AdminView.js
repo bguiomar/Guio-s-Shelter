@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import AnimalCardForm from "../components/AnimalCardForm";
 
 function AdminView(){
-    let [currentAnimalCard, setCurrentAnimalCard] = useState([]); 
+    const [currentAnimalCard, setCurrentAnimalCard] = useState([]); 
     const showAllAnimalCard = () =>{
         fetch("/animalcard?order=ASC&limit=7")
         .then(response => response.json())

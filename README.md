@@ -23,6 +23,7 @@ Run in project directory this npms:
 
 2. FRONTEND:
 
+- Run `npm react-router-dom`
 - Run `npm add mysql nodemon dotenv cors` in your project folder.
 - Run `npm i bootstrap@5.2.0-beta1` in your client folder to apply style.
 
@@ -104,3 +105,28 @@ We need 3 for the project: `animalCard.js`, `images.js` and `index.js`.
 - I use the `npm uuidv4` to avoid repeating the file name, it generates a random number, which is unique and unrepeatable. This way we avoid overwriting.
   2.1. **Get** `"/:id"` You will have to use the animalId to match the animalcard you post.
   2.2. **Post** `"/"` You shoul apply a condition to filter which type of image extension are able to be upload.
+
+### Frontend creation
+
+AÑADIR ESQUEMA
+
+- If you do not installed before, remember to do `npm install react-router-dom`.
+
+1. ADMINVIEW:
+
+- I use the `useState`, so remember to import it.
+- Import all the components you want to see in it. In our case AnimalCardForm.
+
+- Inside the funcion AdminView(), we have:
+
+```Javascript
+AdminView(){
+  showAllAnimalCard() // to show the information in the UserView.
+  postImage(animalId, file) // we give 2 arguments to be able to match file with the correct animal
+  postAnimalCard(newAnimalCard,file) // we give 2 arguments to be able to match file with the correct file uploaded.
+}
+```
+
+for postImage you can found more information in https://dev.to/maureenoldyck/upload-images-with-react-expressjs-and-mysql-47jn
+
+2. USERVIEW:
