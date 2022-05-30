@@ -3,9 +3,6 @@ import "./App.css";
 import {Routes, Route, Link} from "react-router-dom";
 import AdminView from "./views/AdminView";
 import UserView from "./views/UserView";
-import Home from "./views/Home";
-
-
 import Navbar from './components/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

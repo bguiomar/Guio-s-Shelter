@@ -112,10 +112,24 @@ AÑADIR ESQUEMA
 
 - If you do not installed before, remember to do `npm install react-router-dom`.
 
+1. APP:
+
+- I use so remember to import them.????
+
+```JavaScript
+{useState, Routes, Route}
+```
+
+,
+
+- Write the routes to be linked in.
+
+A. VIEWS:
+
 1. ADMINVIEW:
 
-- I use the `useState`, so remember to import it.
 - Import all the components you want to see in it. In our case AnimalCardForm.
+-
 
 - Inside the funcion AdminView(), we have:
 
@@ -127,6 +141,59 @@ AdminView(){
 }
 ```
 
-for postImage you can found more information in https://dev.to/maureenoldyck/upload-images-with-react-expressjs-and-mysql-47jn
+- In case you need more information related with postImage() you can found more information in https://dev.to/maureenoldyck/upload-images-with-react-expressjs-and-mysql-47jn
 
 2. USERVIEW:
+
+- Import all the components you want to see in it. In our case AnimalCardForm.
+
+- Inside the funcion AdminView(), we have:
+
+  ```Javascript
+    UserView(){
+        showAllAnimalCard(){
+           fetch("/animalcard?order=ASC&limit=15")
+        } // to show the information in the UserView.
+
+        filteredAnimalCard(filter){
+          // we coding all the filters we planned in the backend. Keep in mind I wanted to ordered all the cards DESC.
+        }
+  }
+  ```
+
+B. COMPONENTS:
+
+1. NAVBAR:
+
+   - Create one and add the NavLink to be able to changes between each views.
+
+2. FILTER BUTTON:
+
+   - Create a sidebar with all the filters you have.
+
+3. ANIMAL CARD FORM:
+
+   - Inside the funcion AnimalCardForm(), we have:
+
+   ```Javascript
+     AnimalCardForm(props){
+       handleChange(event);
+       handleSubmit(event){
+          props.postAnimalCardCb(newAnimal,file); // the way we upload both of them at the same time.
+       imageHandler(event) // to upload the files.
+       }
+     }
+   ```
+
+4. ANIMAL CARD LIST:
+
+   - Here we have the next functions:
+
+```Javascript
+ Castrate(props) // to apply filter
+ Vaccinate(props) // to apply filter
+ petDescription(props)
+
+ Card(props) // to be able to see an animal card. Here you should include a division to watch the files.
+ AnimalCardsList(porps) // to display all de cards in grid.
+```

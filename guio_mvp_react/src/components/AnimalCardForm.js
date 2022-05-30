@@ -37,96 +37,7 @@ const EMPTY_FORM = {
     }
 
     return (
-        // <div className="potato">
-        //     <input type="file" name="image" accept="image/*" multiple={false} onChange={imageHandler} />
-        //     <form  className ="banana" onSubmit={e => handleSubmit(e)}>
-        //         <label>
-        //         {" "}  Name:{" "}
-        //         <input
-        //             type="text"
-        //             name="petName"
-        //             value={newAnimalCard.petName}
-        //             onChange={e => handleChange(e)}
-        //         />
-        //         </label>
         
-        //         <label>
-        //         {" "}  Species:{" "}
-        //         <select name="species"  onChange={e => handleChange(e) } defaultValue={'dog'}>
-        //             <option value="cat" >Cat</option> 
-        //             <option value="dog" >Dog</option>
-        //         </select>
-        //         </label>
-        //         <label>
-
-        //         {" "} Race:{" "}
-        //         <input
-        //             type="text"
-        //             name="race"
-        //             value={newAnimalCard.race}
-        //             onChange={e => handleChange(e)}
-        //         />
-        //         </label>
-
-        //         <label>
-        //         {" "}Sex:{" "}
-        //         <select name="sex"  onChange={e => handleChange(e) } defaultValue={'Female'}>
-        //             <option value="Female" >Female</option> 
-        //             <option value="Male" >Male</option>
-        //         </select>
-        //         </label>
-                
-        //         <label>
-        //         {" "}chipNumber:{" "}
-        //         <input
-        //             type="number"
-        //             name="chipNumber"
-        //             value={newAnimalCard.chipNumber}
-        //             onChange={e => handleChange(e)}
-        //         />
-        //         </label>
-
-        //         <label>
-        //         {" "}age:{" "}
-        //         <input
-        //             type="number"
-        //             name="age"
-        //             value={newAnimalCard.age}
-        //             onChange={e => handleChange(e)}
-        //         />
-        //         </label>
-
-        //         <label>
-        //         {" "}castrate:{" "}
-        //         <select name="castrate"  onChange={e => handleChange(e) } defaultValue={'0'}>
-        //             <option value="0" >No</option> 
-        //             <option value="1" >Yes</option>
-        //         </select>
-        //         </label>
-
-        //         <label>
-        //         {" "}vaccinate:{" "}
-        //         <select name="vaccinate"  onChange={e => handleChange(e) } defaultValue={'0'}>
-        //             <option value="0" >No</option> 
-        //             <option value="1" >Yes</option>
-        //         </select>
-        //         </label>
-
-        //         <label>
-        //         {" "}petDescription:{" "}
-        //         <textarea
-        //             type="text"
-        //             name="petDescription"
-        //             value={newAnimalCard.petDescription}
-        //             onChange={e => handleChange(e)}
-        //         />
-        //         </label>
-
-        //         <button className="btn btn-primary" type="submit">
-        //         Submit
-        //         </button>
-        //     </form>
-        // </div>
         <div className="d-flex flex-column flex-shrink-0 p-3 bg-light" style={{width: "280px"}}>
             <input type="file" name="image" className="mt-2 mb-4" accept="image/*" multiple={false} onChange={imageHandler} />
 
@@ -266,8 +177,6 @@ const EMPTY_FORM = {
             </form>
         
         </div>
-    
-
    
     );
   }
