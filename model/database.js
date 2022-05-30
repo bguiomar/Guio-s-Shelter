@@ -1,6 +1,6 @@
-require("dotenv").config();
+require("dotenv").config(); 
 const mysql = require("mysql");
-const fs = require("fs");
+const fs = require("fs");//added 
 
 const DB_HOST = process.env.DB_HOST;
 const DB_USER = process.env.DB_USER;
@@ -11,7 +11,7 @@ const con = mysql.createConnection({
   host: DB_HOST || "127.0.0.1",
   user: DB_USER || "root",
   password: DB_PASS,
-  database: DB_NAME || "todos",
+  database: DB_NAME || "animalshelter",
   multipleStatements: true
 });
 
@@ -19,7 +19,7 @@ con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
 
-  let sql = fs.readFileSync(__dirname+"/init_db.sql").toString(); 
+  let sql = fs.readFileSync(__dirname+"/init_db.sql").toString(); //added
   con.query(sql, function (err, result) {
     if (err) throw err;
     console.log("Table creation `items` was successful!");

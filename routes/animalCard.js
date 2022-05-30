@@ -132,23 +132,23 @@ router.post("/animalcard", async function(req, res, next) {
   }
 });
 
-router.delete("/:id", async function(req, res, next) {
+// router.delete("/:id", async function(req, res, next) {
   
-  let animalcardId = req.params.id;
+//   let animalcardId = req.params.id;
 
-  try {
-    let results = await db(`SELECT * FROM animalcard WHERE id= ${animalcardId}`);
-    if (results.data.length === 0) {
-      res.status(404).send({ error: "Pet not found, try again!" });
-    } else {
-      await db(`DELETE FROM animalcard WHERE id = ${animalcardId}`);
-      results = await db("SELECT * FROM animalcard");
-      res.status(201).send(results.data);
-    }
-  } catch (err) {
-    res.status(500).send({ error: err.message });
-  }
-});
+//   try {
+//     let results = await db(`SELECT * FROM animalcard WHERE id= ${animalcardId}`);
+//     if (results.data.length === 0) {
+//       res.status(404).send({ error: "Pet not found, try again!" });
+//     } else {
+//       await db(`DELETE FROM animalcard WHERE id = ${animalcardId}`);
+//       results = await db("SELECT * FROM animalcard");
+//       res.status(201).send(results.data);
+//     }
+//   } catch (err) {
+//     res.status(500).send({ error: err.message });
+//   }
+// });
 
 
 module.exports = router;
