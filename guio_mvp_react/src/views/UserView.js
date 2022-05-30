@@ -59,11 +59,11 @@ function UserView(){
     return(
     <div className="Userview container-fluid"> 
         <div className="row">
-          <div className="col-2">
+          <div className="col-3">
           <FilterButtons  filteredAnimalCardCb={filteredAnimalCard}/>
           </div>
   
-          <div className="col-10"><AnimalCardList CardListCb = {currentAnimalCard}/> 
+          <div className="col-9"><AnimalCardList CardListCb = {currentAnimalCard}/> 
           </div>
         </div>  
       </div>

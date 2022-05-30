@@ -28,9 +28,9 @@ function FilterButtons(props) {
 
   return (
 
-    <div className="d-flex flex-column flex-shrink-0 p-3 mr-3 bg-light" style={{width: "230px"}}>
+    <div className="d-flex flex-column flex-shrink-0 p-3 bg-light" style={{width: "280px"}}>
         <div className="d-flex align-items-center mb-1 mb-md-0 me-md-auto link-dark text-decoration-none">
-        <span className="fs-4">Filter by</span>
+        <span className="fs-4 text-primary">Filter by</span>
         </div>
         <hr/>
         <ul className="nav nav-pills flex-column mb-2">
