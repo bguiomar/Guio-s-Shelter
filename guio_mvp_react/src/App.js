@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import {Routes, Route, BrowserRouter} from "react-router-dom";
+import {Routes, Route, Link} from "react-router-dom";
 import AdminView from "./views/AdminView";
 import UserView from "./views/UserView";
 import Home from "./views/Home";
@@ -15,8 +15,8 @@ export default function App() {
   return (<>
   
     <Navbar/>  
-     <Routes>
-          <Route path="/" element={<Home />}/>
+    <Routes>
+          {/* <Route path="/" element={<Home />} className="nav-item"/> */}
           <Route path="/adminview" element={<AdminView/>}/>
           <Route path="/userview" element={<UserView/>}/>
       </Routes>

@@ -31,7 +31,7 @@ function Card(props){
     <img className="card-img-top" src={props.images[0]} alt="pet photo"/>
     <div className="card-body">
       <h5 className="card-title">{props.petName}</h5>
-      <p className="card-text">{Description(props)}</p>
+      <div className="card-text">{Description(props)}</div>
       <ul className="list-group list-group-flush">
         <li className="list-group-item mb-3">{props.age} years old.</li>
         <li className="list-group-item">{Vaccinate(props)}</li>
@@ -43,9 +43,6 @@ function Card(props){
   )
 }
 
-
-
-
 function AnimalCardList(props) {
   return (
 <div className="container-fluid my-4 p-3" style={{position: "relative"}}>
@@ -53,7 +50,7 @@ function AnimalCardList(props) {
   
   {
     props.CardListCb.map(a => (
-        <div className="col mb-4" key={a.id}>
+        <div className="col mb-6" key={a.id}>
           {Card(a)} 
         </div>
       ))}

@@ -56,11 +56,17 @@ function AdminView(){
         }*/
       };
 
-    return(<>
-    <h1 className="text-second "> AdminView</h1>
-        <AnimalCardForm postAnimalCardCb = {postAnimalCard}/>
-    </>
-        
+    return(
+         <div className="Userview container-fluid"> 
+         <div className="row">
+            <div className="col-3">
+               <AnimalCardForm postAnimalCardCb = {postAnimalCard}/>
+            </div>
+            <div className="col-9 ">
+              <p> Please be kind with the new friend how just arrived!</p>
+            </div>
+         </div>  
+       </div>
         )
 }
 
