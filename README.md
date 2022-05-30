@@ -1,6 +1,3 @@
-para la parte de cambiar el ID en la app.js consultar:
-https://github.com/mysqljs/mysql#getting-the-id-of-an-inserted-row;
-
 ## Setup
 
 ### Motivation
@@ -41,7 +38,7 @@ Run in project directory this npms:
 ```
 
 - Create a new table called animalcard in file `init_db.sql`:
-- Remember to write `DROP TABLE IF EXISTS` at the top of the code and in the proper orden, because first we want to errase animalcarImages and then animalcard. Because if we don't do like that, ?????. :eye:
+- Remember to write `DROP TABLE IF EXISTS` at the top of the code and in the proper orden, because first we want to errase animalcarImages and then animalcard. Because if we don't do like that, we errase the card but no the photo. :eye:
 
 ```JavaScript
 DROP TABLE IF EXISTS animalcardImages;
@@ -108,13 +105,11 @@ We need 3 for the project: `animalCard.js`, `images.js` and `index.js`.
 
 ### Frontend creation
 
-AÑADIR ESQUEMA
-
 - If you do not installed before, remember to do `npm install react-router-dom`.
 
 1. APP:
 
-- I use so remember to import them.????
+- Import:
 
 ```JavaScript
 {useState, Routes, Route}

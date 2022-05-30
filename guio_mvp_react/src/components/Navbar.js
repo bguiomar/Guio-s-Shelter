@@ -8,11 +8,18 @@ function Navbar(){
     return(
       <div className="navbar1">
        <div className="container ">
-       <header className="d-flex justify-content-center py-3">
+       <header className="py-3">
          <ul className="nav nav-pills navbar2">
-            <li> <img src="./photos/logos3.jpeg" alt="logo animal shelter" height="50"/></li>
-           <li className="nav-item"><NavLink to="/adminview" className={"text-white nav-link"}> AdminView</NavLink ></li>
-           <li className="nav-item"><NavLink to="/userview" className={"text-white nav-link"} aria-current="page">UsersView</NavLink ></li>
+           <div clasName="d-flex justify-content-between">
+             <div>
+              <li> <img src="../../photos/logo3v2.png" alt="logo animal shelter" height="50"/></li>
+              </div>
+            <div>            
+              <li className="nav-item"><NavLink to="/adminview" className={"text-white nav-link"}> AdminView</NavLink ></li>
+              <li className="nav-item"><NavLink to="/userview" className={"text-white nav-link"} aria-current="page">UsersView</NavLink ></li>
+            </div>
+
+           </div>
          </ul>
        </header>
      </div>

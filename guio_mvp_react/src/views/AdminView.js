@@ -1,8 +1,12 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import AnimalCardForm from "../components/AnimalCardForm";
+import AnimalCardList from "../components/AnimalCardList";
 
 function AdminView(){
     const [currentAnimalCard, setCurrentAnimalCard] = useState([]); 
+    useEffect(() => {
+      showAllAnimalCard(); 
+      }, []);
     const showAllAnimalCard = () =>{
         fetch("/animalcard?order=ASC&limit=7")
         .then(response => response.json())
@@ -62,9 +66,8 @@ function AdminView(){
             <div className="col-3">
                <AnimalCardForm postAnimalCardCb = {postAnimalCard}/>
             </div>
-            <div className="col-9 ">
-              <p> Please be kind with the new friend how just arrived!</p>
-            </div>
+            <div className="col-9"><AnimalCardList CardListCb = {currentAnimalCard}/> 
+          </div>
          </div>  
        </div>
         )
