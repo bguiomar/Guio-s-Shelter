@@ -77,9 +77,9 @@ CREATE TABLE animalcardImages(
 ### Development
 
 Run `npm run start` in project directory to start the Express server on port 5000
-In another terminal, do cd client and run yarn start to start the client in development mode with hot reloading in port 3000.
+In another terminal, do cd client and run `npm run start` to start the client in development mode with hot reloading in port 3000.
 
-### Routes creation
+### Routes Explanation:
 
 We need 3 for the project: `animalCard.js`, `images.js` and `index.js`.
 
@@ -111,9 +111,9 @@ We need 3 for the project: `animalCard.js`, `images.js` and `index.js`.
 ### HOW TO USE THE APP:
 
 The main purpose is to upload information from a new animal, so you should go to the ADMINVIEW and upload a photo and the pet info and then click on submit. 
-You will see the info en both views (admin and user). 
+You will see the info in both views (admin and user). 
 
-The backend is prepared to be able to upload more than one image. 
+The backend is prepared to be able to upload more than one image in each animalcard. 
 
 ### POSSIBLE FEATURE EXTENSIONS: 
 
