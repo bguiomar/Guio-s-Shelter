@@ -15,7 +15,7 @@ Run in project directory this npms:
 - `npm install` This will install server-related dependencies such as `express`. And then `cd client` and run `npm install`. This will install client dependencies (React).
 
 - `npm install --save multer` to be able to upload more than one image to your card.
-- `npm install uuid` you will use to give a every image a non repetitive number and
+- `npm install uuid` you will use to give a every image a non repetitive number and if you need more help, check this link:  
   https://dev.to/maureenoldyck/upload-images-with-react-expressjs-and-mysql-47jn
 
 2. FRONTEND:
