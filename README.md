@@ -12,7 +12,7 @@ With this proposal we unify all the information in a single place, facilitating 
 
 Run in project directory this npms:
 
-- `npm install` This will install server-related dependencies such as `express` and then `npm run start`.
+- `npm install` This will install server-related dependencies such as `express` and then `npm run start` to install client dependencies (REACT).
 
 - `npm install --save multer` to be able to upload more than one image to your card.
 - `npm install uuid` you will use to give a every image a non repetitive number and if you need more help, check this link:  
@@ -37,8 +37,10 @@ Run in project directory this npms:
   DB_NAME=animalshelter
   DB_PASS=root
 ```
+- `Run npm migrate` in the project folder of this repository, in a new terminal window. This will create two tables: 'animalcard' and 'animalcardImages'.
+- Make sure you understand how the tables are constructed. In your MySQL console, you can run with "use animalcard"; and then "describe [table]"; to see the structure of the table.
 
-- Create a two news tables called animalcard and animalcardImages in file `init_db.sql`:
+- If doesn't works, you can create by yourself. You should create those tables called in file `init_db.sql`:
 - Remember to write `DROP TABLE IF EXISTS` at the top of the code and in the proper orden, because first we want to errase animalcarImages and then animalcard. Because if we don't do like that, we errase the card but no the image. :eye:
 
 ```JavaScript
@@ -72,8 +74,10 @@ CREATE TABLE animalcardImages(
     FOREIGN KEY (animal) REFERENCES animalcard(id)
 );
 ```
+### Development
 
-- Run `npm run migrate` in the project folder of this repository, in a new terminal window. This will create both tables 'animalcard' and 'animalcardImages' in your database. Do not forgot to do it every time you do changes in yours databases.
+Run `npm run start` in project directory to start the Express server on port 5000
+In another terminal, do cd client and run yarn start to start the client in development mode with hot reloading in port 3000.
 
 ### Routes creation
 
@@ -104,92 +108,23 @@ We need 3 for the project: `animalCard.js`, `images.js` and `index.js`.
   2.1. **Get** `"/:id"` You will have to use the animalId to match the animalcard you post.
   2.2. **Post** `"/"` You shoul apply a condition to filter which type of image extension are able to be upload.
 
-### Frontend creation
+### HOW TO USE THE APP:
 
-- If you do not installed before, remember to do `npm install react-router-dom`.
+The main purpose is to upload information from a new animal, so you should go to the ADMINVIEW and upload a photo and the pet info and then click on submit. 
+You will see the info en both views (admin and user). 
 
-1. APP:
+The backend is prepared to be able to upload more than one image. 
 
-- Import:
+### POSSIBLE FEATURE EXTENSIONS: 
 
-```JavaScript
-{useState, Routes, Route}
-```
+1. Create a delete button in the adminview to be able to delete the animalcard when the animal will be adopted. 
+2. Put by default when you open the web, see the userview. 
+3. Make the animalcard clickable and it redirect you to a new view (for example "adoptionview") where you can fill out an adoption.
+4. Create an adoption form and submit the info to the backend and make itvisible to the admin. 
+5. Create a button in adminview to be able to see all the adoptions requests. 
+6. Create a login/pass to go in to the adminview, with that only administrators could post information.
+7. Localitation, be able to see in a map where to say in which shelter is the animal. 
+8. Make a filter by localitation. 
+9. Make a carrousel in the animalcard to be able to see more than one photo.
 
-,
-
-- Write the routes to be linked in.
-
-A. VIEWS:
-
-1. ADMINVIEW:
-
-- Import all the components you want to see in it. In our case AnimalCardForm.
--
-
-- Inside the funcion AdminView(), we have:
-
-```Javascript
-AdminView(){
-  showAllAnimalCard() // to show the information in the UserView.
-  postImage(animalId, file) // we give 2 arguments to be able to match file with the correct animal
-  postAnimalCard(newAnimalCard,file) // we give 2 arguments to be able to match file with the correct file uploaded.
-}
-```
-
-- In case you need more information related with postImage() you can found more information in https://dev.to/maureenoldyck/upload-images-with-react-expressjs-and-mysql-47jn
-
-2. USERVIEW:
-
-- Import all the components you want to see in it. In our case AnimalCardForm.
-
-- Inside the funcion AdminView(), we have:
-
-  ```Javascript
-    UserView(){
-        showAllAnimalCard(){
-           fetch("/animalcard?order=ASC&limit=15")
-        } // to show the information in the UserView.
-
-        filteredAnimalCard(filter){
-          // we coding all the filters we planned in the backend. Keep in mind I wanted to ordered all the cards DESC.
-        }
-  }
-  ```
-
-B. COMPONENTS:
-
-1. NAVBAR:
-
-   - Create one and add the NavLink to be able to changes between each views.
-
-2. FILTER BUTTON:
-
-   - Create a sidebar with all the filters you have.
-
-3. ANIMAL CARD FORM:
-
-   - Inside the funcion AnimalCardForm(), we have:
-
-   ```Javascript
-     AnimalCardForm(props){
-       handleChange(event);
-       handleSubmit(event){
-          props.postAnimalCardCb(newAnimal,file); // the way we upload both of them at the same time.
-       imageHandler(event) // to upload the files.
-       }
-     }
-   ```
-
-4. ANIMAL CARD LIST:
-
-   - Here we have the next functions:
-
-```Javascript
- Castrate(props) // to apply filter
- Vaccinate(props) // to apply filter
- petDescription(props)
-
- Card(props) // to be able to see an animal card. Here you should include a division to watch the files.
- AnimalCardsList(porps) // to display all de cards in grid.
-```
+Thanks in advance to be part of my project :)
