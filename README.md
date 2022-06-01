@@ -8,7 +8,7 @@ With this proposal we unify all the information in a single place, facilitating 
 
 ### Dependencies
 
-1. BACKEND:
+1. BACKEND -general folder:
 
 Run in project directory this npms:
 
@@ -18,11 +18,11 @@ Run in project directory this npms:
 - `npm install uuid` you will use to give a every image a non repetitive number and if you need more help, check this link:  
   https://dev.to/maureenoldyck/upload-images-with-react-expressjs-and-mysql-47jn
 
-2. FRONTEND:
+2. FRONTEND -cd client:
 
 - Run `npm react-router-dom`
-- Run `npm add mysql nodemon dotenv cors` in your project folder.
-- Run `npm i bootstrap@5.2.0-beta1` in your client folder to apply style.
+- Run `npm add mysql nodemon dotenv cors` 
+- Run `npm i bootstrap@5.2.0-beta1` 
 
 ### Database creation
 
@@ -37,8 +37,8 @@ Run in project directory this npms:
   DB_PASS=root
 ```
 
-- Create a new table called animalcard in file `init_db.sql`:
-- Remember to write `DROP TABLE IF EXISTS` at the top of the code and in the proper orden, because first we want to errase animalcarImages and then animalcard. Because if we don't do like that, we errase the card but no the photo. :eye:
+- Create a two news tables called animalcard and animalcardImages in file `init_db.sql`:
+- Remember to write `DROP TABLE IF EXISTS` at the top of the code and in the proper orden, because first we want to errase animalcarImages and then animalcard. Because if we don't do like that, we errase the card but no the image. :eye:
 
 ```JavaScript
 DROP TABLE IF EXISTS animalcardImages;
@@ -61,7 +61,7 @@ CREATE TABLE animalcard(
 );
 ```
 
-- Keep in mind that you will need another new table to linked in with the images you want to upload when you submit the animalcard:
+- animalcardImages we use to upload images when you submit the animalcard. We link both of them, using "foreing key...": 
 
 ```JavaScript
 CREATE TABLE animalcardImages(
@@ -72,7 +72,7 @@ CREATE TABLE animalcardImages(
 );
 ```
 
-- Run `npm run migrate` in the project folder of this repository, in a new terminal window. This will create both tables 'animalcard' and 'animalcardImages' in your database. Do not forgot to do a `npm run migrate` every time you do changes in yours databases.
+- Run `npm run migrate` in the project folder of this repository, in a new terminal window. This will create both tables 'animalcard' and 'animalcardImages' in your database. Do not forgot to do it every time you do changes in yours databases.
 
 ### Routes creation
 
