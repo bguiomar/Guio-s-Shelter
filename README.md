@@ -12,7 +12,7 @@ With this proposal we unify all the information in a single place, facilitating 
 
 Run in project directory this npms:
 
-- `npm install` This will install server-related dependencies such as `express`. And then `cd client` and run `npm install`. This will install client dependencies (React).
+- `npm install` This will install server-related dependencies such as `express` and then `npm run start`.
 
 - `npm install --save multer` to be able to upload more than one image to your card.
 - `npm install uuid` you will use to give a every image a non repetitive number and if you need more help, check this link:  
@@ -20,6 +20,7 @@ Run in project directory this npms:
 
 2. FRONTEND -cd client:
 
+- Run `npm install` and then `npm run start`
 - Run `npm react-router-dom`
 - Run `npm add mysql nodemon dotenv cors` 
 - Run `npm i bootstrap@5.2.0-beta1` 
