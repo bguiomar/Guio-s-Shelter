@@ -85,11 +85,11 @@ We need 3 for the project: `animalCard.js`, `images.js` and `index.js`.
 
 1.  For `animalCard.js`: here you should write all the methods you want to do when you post/add a new pet when you will be at the AdminView Frontend.
     You should need:
-    a. **GET:** `"/"` all the animalcards.
+    - **GET:** `"/"` all the animalcards.
     Here you should apply all the querys that clients will use in form the filters. Example: Species, Age, Sex...
     By default I apply a filter ordering all the cards by descending (DESC) using the date I post/add the new pet. Because this way I want to users be focus on the oldest pet who have spent more time in the shelter. And I applyed a limit to show me no more than 15 cards.
-    b. **GET:** `"/:id"` one animalcard using the Id.
-    c. **POST** `"/animalcard"` to be able to submit and added a new pet. Pay atenttion I change the way I receive the information. See the `helper.js`, with that way I receive the information of the animal I posted instead of receive all of them.
+    - **GET:** `"/:id"` one animalcard using the Id.
+    - **POST** `"/animalcard"` to be able to submit and added a new pet. Pay atenttion I change the way I receive the information. See the `helper.js`, with that way I receive the information of the animal I posted instead of receive all of them.
 
          ```JavaScript
          module.exports = async function db(query) {
@@ -105,8 +105,8 @@ We need 3 for the project: `animalCard.js`, `images.js` and `index.js`.
 
 - I use the `npm multer` to be able to upload more than one file. If you need more informatión you can find it in : https://dev.to/maureenoldyck/upload-images-with-react-expressjs-and-mysql-47jn
 - I use the `npm uuidv4` to avoid repeating the file name, it generates a random number, which is unique and unrepeatable. This way we avoid overwriting.
-  a. **Get** `"/:id"` You will have to use the animalId to match the animalcard you post.
-  b. **Post** `"/"` You shoul apply a condition to filter which type of image extension are able to be upload.
+  - **Get** `"/:id"` You will have to use the animalId to match the animalcard you post.
+  - **Post** `"/"` You shoul apply a condition to filter which type of image extension are able to be upload.
 
 ### HOW TO USE THE APP:
 
